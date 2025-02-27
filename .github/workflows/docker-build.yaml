@@ -116,7 +116,7 @@ jobs:
           docker save --output ci-${{ matrix.hass_arch }}-${{ github.run_number }}.tar.gz ci:${{ github.run_number }}
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ci-${{ matrix.hass_arch }}-${{ github.run_number }}
           path: ci-${{ matrix.hass_arch }}-${{ github.run_number }}.tar.gz
@@ -131,15 +131,15 @@ jobs:
         arch: [i386, amd64, armv6, armv7, aarch64]
         registry:
           - {
-              url: ghcr.io/cvele,
-              repo: ghcr.io/cvele/hass-emulated-hue-core,
+              url: ghcr.io/mprajsler,
+              repo: ghcr.io/mprajsler/hass-emulated-hue-core,
             }
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Download container artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ci-${{ matrix.arch }}-${{ github.run_number }}
 
@@ -191,12 +191,12 @@ jobs:
       matrix:
         registry:
           - {
-              url: ghcr.io/cvele,
-              repo: ghcr.io/cvele/hass-emulated-hue-core,
+              url: ghcr.io/mprajsler,
+              repo: ghcr.io/mprajsler/hass-emulated-hue-core,
             }
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Enable Experimental Docker Features
         run: |
